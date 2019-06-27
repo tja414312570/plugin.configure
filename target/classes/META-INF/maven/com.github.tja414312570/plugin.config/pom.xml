@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.github.tja414312570</groupId>
+  <artifactId>plugin.config</artifactId>
+  <version>1.0.0</version>
+  <name>config</name>
+  <description>support plugin hocon configure,base lightbend https://github.com/lightbend/config</description>
+  <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+   </parent>
+   <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <tag>1.0</tag>
+        <url>https://github.com/tja414312570/config</url>
+        <connection>scm:git:git@github.com:tja414312570/config.git</connection>
+        <developerConnection>scm:git:git@github.com:tja414312570/config.git</developerConnection>
+    </scm>
+    <developers>
+        <developer>
+            <name>yanan</name>
+            <email>tja414312570@gmail.com</email>
+            <organization>plugin</organization>
+            <url>https://github.com/tja414312570</url>
+        </developer>
+    </developers>
+  
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <resources>
+      <resource>
+        <directory>src</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
