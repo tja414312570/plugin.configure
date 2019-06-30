@@ -1,6 +1,6 @@
 # config 一个采用类json格式的配置
 ## [介绍](https://github.com/tja414312570/plugin.configure/wiki/home)
-基于Hocon的配置，宽松的语法
+基于Hocon的配置，宽松的语法，与原始项目相比，新加部分api，数组以及配置采用有序集合形式，保证了配置的循序
 ```json
 MVC:{
 	SERVER:{
