@@ -74,8 +74,15 @@ plugins:[
 	void merge(Config config);
 ## 开始使用
 
-* [1.0 安装](https://github.com/tja414312570/plugin.configure/wiki/install)
-* [2.0 HelloWorld](https://github.com/tja414312570/plugin.configure/wiki/install)
-
-## [API](https://github.com/tja414312570/plugin.configure/wiki/api)
-[更多内容访问地址]https://github.com/lightbend/config
+* 安装
+	* 引入jar包的方式，到 [这里](https://github.com/tja414312570/plugin.configure/tree/master/target) 下载对应jar包
+	* pom依赖
+```xml
+	<dependency>
+		<groupId>com.github.tja414312570</groupId>
+		<artifactId>plugin.config</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+```
+# 传送门
+[原始项目](https://github.com/lightbend/config)
