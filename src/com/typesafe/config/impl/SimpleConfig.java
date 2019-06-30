@@ -637,7 +637,7 @@ public final class SimpleConfig implements Config, MergeableValue, Serializable 
             return v;
     }
 
-    final private AbstractConfigObject object;
+    private AbstractConfigObject object;
 
     private boolean allowKeyNull;
 
@@ -1403,5 +1403,13 @@ public final class SimpleConfig implements Config, MergeableValue, Serializable 
 	            	l.add(v);
 	        }
 	        return l;
+	}
+
+	@Override
+	public void merge(Config config) {
+		ConfigOrigin origin = SimpleConfigOrigin.mergeOrigins(object.origin(), config.origin());
+		object.setOrigin((SimpleConfigOrigin) origin);
+		SimpleConfigObject sco = (SimpleConfigObject) object;
+		sco.mergedWithObject((AbstractConfigObject)config.root());
 	}
 }

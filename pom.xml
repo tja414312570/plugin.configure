@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.tja414312570</groupId>
   <artifactId>plugin.config</artifactId>
-  <version>1.0.0</version>
+  <version>0.0.1-SNAPSHOT</version>
   <name>config</name>
   <description>support plugin hocon configure,base lightbend https://github.com/lightbend/config</description>
   <parent>

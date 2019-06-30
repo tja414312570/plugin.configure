@@ -1153,72 +1153,82 @@ public interface Config extends ConfigMergeable {
      */
     Config withValue(String path, ConfigValue value);
     /**
-     * 是否允许key不存在
+     * Whether to allow the key to not exist
+     * @param allowNull
      */
     void allowKeyNull(boolean allowNull);
     /**
-     * 允许key不存在
+     * allow the key to not exist
      */
     void allowKeyNull();
     /**
-     * 是否启用类型验证
+     * Whether to enable type verification
+     * @param isVerify
      */
     void enableTypeVerify(boolean isVerify);
     /**
-     * 启用类型验证
+     * Enable type verification
      */
     void enableTypeVerify();
     /**
-     * 禁用类型验证
+     * Disable type verification
      */
     void disableTypeVerify();
     /**
-     * 是否允许value为null
+     * Whether to allow value to be null
+     * @param allowNull
      */
     void allowValueNull(boolean allowNull);
     /**
-     * 允许value为null
+     * Set allow value to be null
      */
     void allowValueNull();
     /**
-     * 判断值是否为对象的list
+     * Determine if the value is a list of objects
+     * @param path
+     * @return
      */
     boolean isConfigList(String path);
     /**
-     * 判断值是否为集合
+     * Determine if the value is a collection
+     * @param string path
+     * @return
      */
     boolean isList(String string);
     /**
-     * 获取路劲下的所有config的集合
-     * @return
+     * Get a collection of all configs under the road
+     * @return config entry set
      */
 	Set<Entry<String, Config>> configEntrySet();
 	/**
-	 * 获取路劲下的所有简单对象集合
+	 * Get all the simple object collections under the road
 	 * @return
 	 */
 	Set<Entry<String, Object>> simpleObjectEntrySet();
 	/**
-	 * 获取key对应值得类型,对应的值类型分别为
+	 * 	Get the key corresponding to the type of the value, the corresponding value type is
 	 *  OBJECT, LIST, NUMBER, BOOLEAN, NULL, STRING
 	 * @param path
 	 * @return ConfigValueType
 	 */
 	ConfigValueType getType(String path);
 	/**
-	 * 获取列表的所有值
-	 * @param string
+	 * Get all the values of the list
+	 * @param string path
 	 * @return
 	 */
 	List<? extends Object> getValueList(String path);
 	/**
-	 * 获取列表的所有值,且将基本类型转化转化出来
-	 * @param string
+	 * Get all the values for the list and convert the basic type conversions
+	 * @param string path
 	 * @return
 	 */
 	List<? extends Object> getValueListUnwrapper(String path);
-
-
+	/**
+	 * merge the config with other
+	 * @param config
+	 */
+	void merge(Config config);
 	
     
 }

@@ -28,10 +28,16 @@ public final class SimpleConfigObject extends AbstractConfigObject implements Se
     private static final long serialVersionUID = 2L;
 
     // this map should never be modified - assume immutable
-    final private Map<String, AbstractConfigValue> value;
+    private Map<String, AbstractConfigValue> value;
     final private boolean resolved;
     final private boolean ignoresFallbacks;
 
+    public void setValue(Map<String, AbstractConfigValue> value) {
+    	this.value = value;
+    }
+    public Map<String, AbstractConfigValue> getValue() {
+    	return this.value;
+    }
     SimpleConfigObject(ConfigOrigin origin,
             Map<String, AbstractConfigValue> value, ResolveStatus status,
             boolean ignoresFallbacks) {
@@ -284,14 +290,14 @@ public final class SimpleConfigObject extends AbstractConfigObject implements Se
 
         ResolveStatus newResolveStatus = ResolveStatus.fromBoolean(allResolved);
         boolean newIgnoresFallbacks = fallback.ignoresFallbacks();
-
-        if (changed)
-            return new SimpleConfigObject(mergeOrigins(this, fallback), merged, newResolveStatus,
-                    newIgnoresFallbacks);
+        SimpleConfigObject sco = this;
+        if (changed) {
+        	 sco.setValue(new SimpleConfigObject(mergeOrigins(this, fallback), merged, newResolveStatus,
+                     newIgnoresFallbacks).getValue());
+        }
         else if (newResolveStatus != resolveStatus() || newIgnoresFallbacks != ignoresFallbacks())
-            return newCopy(newResolveStatus, origin(), newIgnoresFallbacks);
-        else
-            return this;
+        	sco.setValue(newCopy(newResolveStatus, origin(), newIgnoresFallbacks).getValue());
+        return sco;
     }
 
     private SimpleConfigObject modify(NoExceptionsModifier modifier) {

@@ -25,9 +25,13 @@ import com.typesafe.config.ConfigValue;
  */
 public abstract class AbstractConfigValue implements ConfigValue, MergeableValue {
 
-    final private SimpleConfigOrigin origin;
+    private SimpleConfigOrigin origin;
 
-    AbstractConfigValue(ConfigOrigin origin) {
+    public void setOrigin(SimpleConfigOrigin origin) {
+		this.origin = origin;
+	}
+
+	AbstractConfigValue(ConfigOrigin origin) {
         this.origin = (SimpleConfigOrigin) origin;
     }
 
