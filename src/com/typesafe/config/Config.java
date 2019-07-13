@@ -1191,10 +1191,10 @@ public interface Config extends ConfigMergeable {
     boolean isConfigList(String path);
     /**
      * Determine if the value is a collection
-     * @param string path
+     * @param path path
      * @return
      */
-    boolean isList(String string);
+    boolean isList(String path);
     /**
      * Get a collection of all configs under the road
      * @return config entry set
