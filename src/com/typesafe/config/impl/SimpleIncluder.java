@@ -166,12 +166,12 @@ public class SimpleIncluder implements FullIncluder {
     // loading app.{conf,json,properties} from the filesystem.
     static ConfigObject fromBasename(NameSource source, String name, ConfigParseOptions options) {
         ConfigObject obj;
-        if (name.endsWith(".conf") || name.endsWith(".json") || name.endsWith(".properties")) {
+        if (name.endsWith(".yc") || name.endsWith(".json") || name.endsWith(".properties")) {
             ConfigParseable p = source.nameToParseable(name, options);
 
             obj = p.parse(p.options().setAllowMissing(options.getAllowMissing()));
         } else {
-            ConfigParseable confHandle = source.nameToParseable(name + ".conf", options);
+            ConfigParseable confHandle = source.nameToParseable(name + ".yc", options);
             ConfigParseable jsonHandle = source.nameToParseable(name + ".json", options);
             ConfigParseable propsHandle = source.nameToParseable(name + ".properties", options);
             boolean gotSomething = false;
@@ -217,7 +217,7 @@ public class SimpleIncluder implements FullIncluder {
                     // the individual exceptions should have been logged already
                     // with tracing enabled
                     ConfigImpl.trace("Did not find '" + name
-                            + "' with any extension (.conf, .json, .properties); "
+                            + "' with any extension (.yc, .json, .properties); "
                             + "exceptions should have been logged above.");
                 }
 
@@ -238,7 +238,7 @@ public class SimpleIncluder implements FullIncluder {
             } else if (!gotSomething) {
                 if (ConfigImpl.traceLoadsEnabled()) {
                     ConfigImpl.trace("Did not find '" + name
-                            + "' with any extension (.conf, .json, .properties); but '" + name
+                            + "' with any extension (.yc, .json, .properties); but '" + name
                                     + "' is allowed to be missing. Exceptions from load attempts should have been logged above.");
                 }
             }

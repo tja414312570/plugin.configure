@@ -22,7 +22,7 @@ build your own configuration in code or from your own file formats.
 
 <p>
 An application can simply call {@link com.typesafe.config.ConfigFactory#load()} and place
-its configuration in "application.conf" on the classpath.
+its configuration in "application.yc" on the classpath.
 If you use the default configuration from {@link com.typesafe.config.ConfigFactory#load()}
 there's no need to pass a configuration to your libraries
 and frameworks, as long as they all default to this same default, which they should.
@@ -31,7 +31,7 @@ and frameworks, as long as they all default to this same default, which they sho
 </p>
 
 <p>
-A library or framework should ship a file "reference.conf" in its jar, and allow an application to pass in a
+A library or framework should ship a file "reference.yc" in its jar, and allow an application to pass in a
 {@link com.typesafe.config.Config} to be used for the library. If no {@link com.typesafe.config.Config} is provided,
 call {@link com.typesafe.config.ConfigFactory#load()}
 to get the default one. Typically a library might offer two constructors, one with a <code>Config</code> parameter
