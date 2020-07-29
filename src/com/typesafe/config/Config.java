@@ -1192,7 +1192,7 @@ public interface Config extends ConfigMergeable {
     /**
      * Determine if the value is a collection
      * @param path path
-     * @return
+     * @return boolean
      */
     boolean isList(String path);
     /**
@@ -1202,31 +1202,31 @@ public interface Config extends ConfigMergeable {
 	Set<Entry<String, Config>> configEntrySet();
 	/**
 	 * Get all the simple object collections under the road
-	 * @return
+	 * @return object set
 	 */
 	Set<Entry<String, Object>> simpleObjectEntrySet();
 	/**
 	 * 	Get the key corresponding to the type of the value, the corresponding value type is
 	 *  OBJECT, LIST, NUMBER, BOOLEAN, NULL, STRING
-	 * @param path
-	 * @return ConfigValueType
+	 * @param path path
+	 * @return ConfigValueType 
 	 */
 	ConfigValueType getType(String path);
 	/**
 	 * Get all the values of the list
-	 * @param string path
-	 * @return
+	 * @param path path
+	 * @return value list
 	 */
 	List<? extends Object> getValueList(String path);
 	/**
 	 * Get all the values for the list and convert the basic type conversions
-	 * @param string path
-	 * @return
+	 * @param path path
+	 * @return  value list
 	 */
 	List<? extends Object> getValueListUnwrapper(String path);
 	/**
 	 * merge the config with other
-	 * @param config
+	 * @param config config
 	 */
 	void merge(Config config);
 	

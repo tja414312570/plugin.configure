@@ -614,24 +614,6 @@ public final class ConfigFactory {
      * 
      * <p>
      * Environment variables are mangled in the following way after stripping the prefix "CONFIG_FORCE_":
-     * <table border="1">
-     * <tr>
-     *     <th bgcolor="silver">Env Var</th>
-     *     <th bgcolor="silver">Config</th>
-     * </tr>
-     * <tr>
-     *     <td>_&nbsp;&nbsp;&nbsp;[1 underscore]</td>
-     *     <td>. [dot]</td>
-     * </tr>
-     * <tr>
-     *     <td>__&nbsp;&nbsp;[2 underscore]</td>
-     *     <td>- [dash]</td>
-     *  </tr>
-     * <tr>
-     *     <td>___&nbsp;[3 underscore]</td>
-     *     <td>_ [underscore]</td>
-     * </tr>
-     * </table>
      * 
      * <p>
      * A variable like: {@code CONFIG_FORCE_a_b__c___d}
