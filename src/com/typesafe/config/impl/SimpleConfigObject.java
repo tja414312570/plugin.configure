@@ -439,9 +439,7 @@ public final class SimpleConfigObject extends AbstractConfigObject implements Se
             for (int i = 0; i < length; ++i) {
                 char c = s.charAt(i);
 
-                if (Character.isDigit(c))
-                    continue;
-                else
+                if (!Character.isDigit(c))
                     return false;
             }
             return true;
