@@ -14,10 +14,9 @@ import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAmount;
 import java.util.AbstractMap;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -66,7 +65,7 @@ public final class SimpleConfig implements Config, MergeableValue, Serializable 
 
         private static Map<String, MemoryUnit> unitsMap = makeUnitsMap();
         private static Map<String, MemoryUnit> makeUnitsMap() {
-            Map<String, MemoryUnit> map = new HashMap<String, MemoryUnit>();
+            Map<String, MemoryUnit> map = new LinkedHashMap<String, MemoryUnit>();
             for (MemoryUnit unit : MemoryUnit.values()) {
                 map.put(unit.prefix + "byte", unit);
                 map.put(unit.prefix + "bytes", unit);
@@ -1306,7 +1305,7 @@ public final class SimpleConfig implements Config, MergeableValue, Serializable 
 
 	@Override
 	public Set<Entry<String, Object>> simpleObjectEntrySet() {
-		Set<Map.Entry<String, Object>> entries = new HashSet<Map.Entry<String, Object>>();
+		Set<Map.Entry<String, Object>> entries = new LinkedHashSet<Map.Entry<String, Object>>();
         Iterator<Entry<String, ConfigValue>> iterator = object.entrySet().iterator();
         while(iterator.hasNext()){
         	Entry<String, ConfigValue> entry = iterator.next();

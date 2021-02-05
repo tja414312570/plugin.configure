@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -45,8 +45,8 @@ public class ConfigBeanImpl {
             throw new ConfigException.NotResolved(
                     "need to Config#resolve() a config before using it to initialize a bean, see the API docs for Config#resolve()");
 
-        Map<String, AbstractConfigValue> configProps = new HashMap<String, AbstractConfigValue>();
-        Map<String, String> originalNames = new HashMap<String, String>();
+        Map<String, AbstractConfigValue> configProps = new LinkedHashMap<String, AbstractConfigValue>();
+        Map<String, String> originalNames = new LinkedHashMap<String, String>();
         for (Map.Entry<String, ConfigValue> configProp : config.root().entrySet()) {
             String originalName = configProp.getKey();
             String camelName = ConfigImplUtil.toCamelCase(originalName);

@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -118,7 +117,7 @@ public final class SimpleConfigObject extends AbstractConfigObject implements Se
 
         if (v != null && next != null && v instanceof AbstractConfigObject) {
             v = ((AbstractConfigObject) v).withoutPath(next);
-            Map<String, AbstractConfigValue> updated = new HashMap<String, AbstractConfigValue>(
+            Map<String, AbstractConfigValue> updated = new LinkedHashMap<String, AbstractConfigValue>(
                     value);
             updated.put(key, v);
             return new SimpleConfigObject(origin(), updated, ResolveStatus.fromValues(updated
@@ -127,7 +126,7 @@ public final class SimpleConfigObject extends AbstractConfigObject implements Se
             // can't descend, nothing to remove
             return this;
         } else {
-            Map<String, AbstractConfigValue> smaller = new HashMap<String, AbstractConfigValue>(
+            Map<String, AbstractConfigValue> smaller = new LinkedHashMap<String, AbstractConfigValue>(
                     value.size() - 1);
             for (Map.Entry<String, AbstractConfigValue> old : value.entrySet()) {
                 if (!old.getKey().equals(key))
@@ -148,7 +147,7 @@ public final class SimpleConfigObject extends AbstractConfigObject implements Se
         if (value.isEmpty()) {
             newMap = Collections.singletonMap(key, (AbstractConfigValue) v);
         } else {
-            newMap = new HashMap<String, AbstractConfigValue>(value);
+            newMap = new LinkedHashMap<String, AbstractConfigValue>(value);
             newMap.put(key, (AbstractConfigValue) v);
         }
 
@@ -207,7 +206,7 @@ public final class SimpleConfigObject extends AbstractConfigObject implements Se
 
     @Override
     public SimpleConfigObject replaceChild(AbstractConfigValue child, AbstractConfigValue replacement) {
-        HashMap<String, AbstractConfigValue> newChildren = new HashMap<String, AbstractConfigValue>(value);
+        LinkedHashMap<String, AbstractConfigValue> newChildren = new LinkedHashMap<String, AbstractConfigValue>(value);
         for (Map.Entry<String, AbstractConfigValue> old : newChildren.entrySet()) {
             if (old.getValue() == child) {
                 if (replacement != null)
@@ -244,7 +243,7 @@ public final class SimpleConfigObject extends AbstractConfigObject implements Se
 
     @Override
     public Map<String, Object> unwrapped() {
-        Map<String, Object> m = new HashMap<String, Object>();
+        Map<String, Object> m = new LinkedHashMap<String, Object>();
         for (Map.Entry<String, AbstractConfigValue> e : value.entrySet()) {
             m.put(e.getKey(), e.getValue().unwrapped());
         }
@@ -264,8 +263,8 @@ public final class SimpleConfigObject extends AbstractConfigObject implements Se
 
         boolean changed = false;
         boolean allResolved = true;
-        Map<String, AbstractConfigValue> merged = new HashMap<String, AbstractConfigValue>();
-        Set<String> allKeys = new HashSet<String>();
+        Map<String, AbstractConfigValue> merged = new LinkedHashMap<String, AbstractConfigValue>();
+        Set<String> allKeys = new LinkedHashSet<String>();
         allKeys.addAll(this.keySet());
         allKeys.addAll(fallback.keySet());
         for (String key : allKeys) {
@@ -319,14 +318,14 @@ public final class SimpleConfigObject extends AbstractConfigObject implements Se
             AbstractConfigValue modified = modifier.modifyChildMayThrow(k, v);
             if (modified != v) {
                 if (changes == null)
-                    changes = new HashMap<String, AbstractConfigValue>();
+                    changes = new LinkedHashMap<String, AbstractConfigValue>();
                 changes.put(k, modified);
             }
         }
         if (changes == null) {
             return this;
         } else {
-            Map<String, AbstractConfigValue> modified = new HashMap<String, AbstractConfigValue>();
+            Map<String, AbstractConfigValue> modified = new LinkedHashMap<String, AbstractConfigValue>();
             boolean sawUnresolved = false;
             for (String k : keySet()) {
                 if (changes.containsKey(k)) {
@@ -623,7 +622,7 @@ public final class SimpleConfigObject extends AbstractConfigObject implements Se
     public Set<Map.Entry<String, ConfigValue>> entrySet() {
         // total bloat just to work around lack of type variance
     	
-        HashSet<java.util.Map.Entry<String, ConfigValue>> entries = new LinkedHashSet<Map.Entry<String, ConfigValue>>();
+        LinkedHashSet<java.util.Map.Entry<String, ConfigValue>> entries = new LinkedHashSet<Map.Entry<String, ConfigValue>>();
         for (Map.Entry<String, AbstractConfigValue> e : value.entrySet()) {
             entries.add(new AbstractMap.SimpleImmutableEntry<String, ConfigValue>(
                     e.getKey(), e
@@ -645,7 +644,7 @@ public final class SimpleConfigObject extends AbstractConfigObject implements Se
 
     @Override
     public Collection<ConfigValue> values() {
-        return new HashSet<ConfigValue>(value.values());
+        return new LinkedHashSet<ConfigValue>(value.values());
     }
 
     final private static String EMPTY_NAME = "empty config";
