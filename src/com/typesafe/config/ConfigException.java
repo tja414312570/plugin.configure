@@ -332,7 +332,11 @@ public abstract class ConfigException extends RuntimeException implements Serial
      */
     public static class ValidationProblem implements Serializable {
 
-        final private String path;
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1135235035646344190L;
+		final private String path;
         final private transient ConfigOrigin origin;
         final private String problem;
 

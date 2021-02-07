@@ -181,7 +181,7 @@ public class ConfigBeanImpl {
             return config.getList(configPropName);
         } else if (parameterClass.isEnum()) {
             @SuppressWarnings("unchecked")
-            Enum enumValue = config.getEnum((Class<Enum>) parameterClass, configPropName);
+            Enum<?> enumValue = config.getEnum((Class<Enum>) parameterClass, configPropName);
             return enumValue;
         } else if (hasAtLeastOneBeanProperty(parameterClass)) {
             return createInternal(config.getConfig(configPropName), parameterClass);

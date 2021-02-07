@@ -1406,9 +1406,10 @@ public final class SimpleConfig implements Config, MergeableValue, Serializable 
 
 	@Override
 	public void merge(Config config) {
-		ConfigOrigin origin = SimpleConfigOrigin.mergeOrigins(object.origin(), config.origin());
-		object.setOrigin((SimpleConfigOrigin) origin);
-		SimpleConfigObject sco = (SimpleConfigObject) object;
-		sco.mergedWithObject((AbstractConfigObject)config.root());
+		object = (AbstractConfigObject) config.withFallback(object).root();
+//		ConfigOrigin origin = SimpleConfigOrigin.mergeOrigins(object.origin(), config.origin());
+//		object.setOrigin((SimpleConfigOrigin) origin);
+//		SimpleConfigObject sco = (SimpleConfigObject) object;
+//		sco.mergedWithObject((AbstractConfigObject)config.root());
 	}
 }
