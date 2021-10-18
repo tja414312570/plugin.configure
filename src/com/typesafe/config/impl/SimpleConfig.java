@@ -25,6 +25,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigException;
+import com.typesafe.config.ConfigFactory;
 import com.typesafe.config.ConfigList;
 import com.typesafe.config.ConfigMemorySize;
 import com.typesafe.config.ConfigMergeable;
@@ -1406,7 +1407,8 @@ public final class SimpleConfig implements Config, MergeableValue, Serializable 
 
 	@Override
 	public void merge(Config config) {
-		object = (AbstractConfigObject) config.withFallback(object).root();
+		Config newConfig = ConfigFactory.defaultApplication().withFallback(config);
+		object = (AbstractConfigObject) newConfig.withFallback(object).root();
 //		ConfigOrigin origin = SimpleConfigOrigin.mergeOrigins(object.origin(), config.origin());
 //		object.setOrigin((SimpleConfigOrigin) origin);
 //		SimpleConfigObject sco = (SimpleConfigObject) object;
