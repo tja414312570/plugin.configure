@@ -3,15 +3,16 @@
  */
 package com.typesafe.config;
 
-import com.typesafe.config.impl.ConfigImpl;
-import com.typesafe.config.impl.Parseable;
-
 import java.io.File;
 import java.io.Reader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Callable;
+
+import com.typesafe.config.impl.ConfigImpl;
+import com.typesafe.config.impl.Parseable;
 
 /**
  * Contains static methods for creating {@link Config} instances.
@@ -33,6 +34,7 @@ import java.util.concurrent.Callable;
  * href="package-summary.html#package_description">package
  * overview</a> which describes the big picture as shown in those
  * examples.
+ * 支持根元素为数组
  */
 public final class ConfigFactory {
     private static final String STRATEGY_PROPERTY_NAME = "config.strategy";
@@ -702,8 +704,8 @@ public final class ConfigFactory {
      * @return the parsed configuration
      * @throws ConfigException on IO or parse errors
      */
-    public static Config parseReader(Reader reader, ConfigParseOptions options) {
-        return Parseable.newReader(reader, options).parse().toConfig();
+    public static <T extends Object & ConfigList & Config> T parseReader(Reader reader, ConfigParseOptions options) {
+        return parse(Parseable.newReader(reader, options));
     }
 
     /**
@@ -716,7 +718,7 @@ public final class ConfigFactory {
      * @return the parsed configuration
      * @throws ConfigException on IO or parse errors
      */
-    public static Config parseReader(Reader reader) {
+    public static <T extends Object & ConfigList & Config> T parseReader(Reader reader) {
         return parseReader(reader, ConfigParseOptions.defaults());
     }
 
@@ -735,8 +737,8 @@ public final class ConfigFactory {
      * @return the parsed configuration
      * @throws ConfigException on IO or parse errors
      */
-    public static Config parseURL(URL url, ConfigParseOptions options) {
-        return Parseable.newURL(url, options).parse().toConfig();
+    public static <T extends Object & ConfigList & Config> T parseURL(URL url, ConfigParseOptions options) {
+        return parse(Parseable.newURL(url, options));
     }
 
     /**
@@ -749,7 +751,7 @@ public final class ConfigFactory {
      * @return the parsed configuration
      * @throws ConfigException on IO or parse errors
      */
-    public static Config parseURL(URL url) {
+    public static <T extends Object & ConfigList & Config> T parseURL(URL url) {
         return parseURL(url, ConfigParseOptions.defaults());
     }
 
@@ -768,8 +770,8 @@ public final class ConfigFactory {
      * @return the parsed configuration
      * @throws ConfigException on IO or parse errors
      */
-    public static Config parseFile(File file, ConfigParseOptions options) {
-        return Parseable.newFile(file, options).parse().toConfig();
+    public static <T extends Object & ConfigList & Config> T parseFile(File file, ConfigParseOptions options) {
+        return parse(Parseable.newFile(file, options));
     }
 
     /**
@@ -782,7 +784,7 @@ public final class ConfigFactory {
      * @return the parsed configuration
      * @throws ConfigException on IO or parse errors
      */
-    public static Config parseFile(File file) {
+    public static <T extends Object & ConfigList & Config> T parseFile(File file) {
         return parseFile(file, ConfigParseOptions.defaults());
     }
 
@@ -865,10 +867,9 @@ public final class ConfigFactory {
      *            parse options
      * @return the parsed configuration
      */
-    public static Config parseResources(Class<?> klass, String resource,
+    public static <T extends Object & ConfigList & Config> T parseResources(Class<?> klass, String resource,
             ConfigParseOptions options) {
-        return Parseable.newResources(klass, resource, options).parse()
-                .toConfig();
+        return parse(Parseable.newResources(klass, resource, options));
     }
 
     /**
@@ -884,7 +885,7 @@ public final class ConfigFactory {
      *            or absolute starting with a "/"
      * @return the parsed configuration
      */
-    public static Config parseResources(Class<?> klass, String resource) {
+    public static <T extends Object & ConfigList & Config> T parseResources(Class<?> klass, String resource) {
         return parseResources(klass, resource, ConfigParseOptions.defaults());
     }
 
@@ -963,7 +964,7 @@ public final class ConfigFactory {
      *            parse options (class loader is ignored)
      * @return the parsed configuration
      */
-    public static Config parseResources(ClassLoader loader, String resource,
+    public static <T extends Object & ConfigList & Config> T parseResources(ClassLoader loader, String resource,
             ConfigParseOptions options) {
         return parseResources(resource, options.setClassLoader(loader));
     }
@@ -978,7 +979,7 @@ public final class ConfigFactory {
      *            resource to look up in the loader
      * @return the parsed configuration
      */
-    public static Config parseResources(ClassLoader loader, String resource) {
+    public static <T extends Object & ConfigList & Config> T parseResources(ClassLoader loader, String resource) {
         return parseResources(loader, resource, ConfigParseOptions.defaults());
     }
 
@@ -1035,9 +1036,9 @@ public final class ConfigFactory {
      * @param options parse options
      * @return the parsed configuration
      */
-    public static Config parseResources(String resource, ConfigParseOptions options) {
+    public static <T extends Object & ConfigList & Config> T parseResources(String resource, ConfigParseOptions options) {
         ConfigParseOptions withLoader = ensureClassLoader(options, "parseResources");
-        return Parseable.newResources(resource, withLoader).parse().toConfig();
+        return parse(Parseable.newResources(resource, withLoader));
     }
 
     /**
@@ -1046,7 +1047,7 @@ public final class ConfigFactory {
      * @param resource the resource name
      * @return the parsed configuration
      */
-    public static Config parseResources(String resource) {
+    public static <T extends Object & ConfigList & Config> T parseResources(String resource) {
         return parseResources(resource, ConfigParseOptions.defaults());
     }
 
@@ -1073,6 +1074,89 @@ public final class ConfigFactory {
     }
 
     /**
+     * Parse only any application replacement (specified by one of config.{resource,file,url}), returning
+     * an empty Config if no overrides were set.
+     *
+     * @since 1.4.1
+     *
+     * @return a {@link java.util.Optional} containing any specified replacement, or {@link Optional#empty()}
+     * if none was specified.
+     */
+    public static java.util.Optional<Config> parseApplicationReplacement() {
+        return parseApplicationReplacement(ConfigParseOptions.defaults());
+    }
+
+    /**
+     * Like {@link #parseApplicationReplacement()} but allows you to specify a class loader
+     * ti yse rather than the current context class loader.
+     *
+     * @since 1.4.1
+     *
+     * @param loader the class loader
+     * @return a {@link java.util.Optional} containing any specified replacement, or {@link Optional#empty()}
+     * if none was specified.
+     */
+    public static java.util.Optional<Config> parseApplicationReplacement(ClassLoader loader) {
+        return parseApplicationReplacement(ConfigParseOptions.defaults().setClassLoader(loader));
+    }
+
+    /**
+     * Like {@link #parseApplicationReplacement()} but allows you to specify parse options.
+     *
+     * @since 1.4.1
+     *
+     * @param parseOptions parse options
+     * @return a {@link java.util.Optional} containing any specified replacement, or {@link Optional#empty()}
+     * if none was specified.
+     */
+    public static java.util.Optional<Config> parseApplicationReplacement(ConfigParseOptions parseOptions) {
+        final ConfigParseOptions withLoader = ensureClassLoader(parseOptions, "parseApplicationReplacement");
+        ClassLoader loader = withLoader.getClassLoader();
+
+        int specified = 0;
+
+        // override application.conf with config.file, config.resource,
+        // config.url if requested.
+        String resource = System.getProperty("config.resource");
+        if (resource != null)
+            specified += 1;
+        String file = System.getProperty("config.file");
+        if (file != null)
+            specified += 1;
+        String url = System.getProperty("config.url");
+        if (url != null)
+            specified += 1;
+
+        if (specified == 0) {
+            return java.util.Optional.empty();
+        } else if (specified > 1) {
+            throw new ConfigException.Generic("You set more than one of config.file='" + file
+                + "', config.url='" + url + "', config.resource='" + resource
+                + "'; don't know which one to use!");
+        } else {
+            // the override file/url/resource MUST be present or it's an error
+            ConfigParseOptions overrideOptions = parseOptions.setAllowMissing(false);
+            if (resource != null) {
+                if (resource.startsWith("/"))
+                    resource = resource.substring(1);
+                // this deliberately does not parseResourcesAnySyntax; if
+                // people want that they can use an include statement.
+                return java.util.Optional.of(ConfigFactory.parseResources(loader, resource, overrideOptions));
+            } else if (file != null) {
+                return java.util.Optional.of(ConfigFactory.parseFile(new File(file), overrideOptions));
+            } else {
+                try {
+                    return java.util.Optional.of(ConfigFactory.parseURL(new URL(url), overrideOptions));
+                } catch (MalformedURLException e) {
+                    throw new ConfigException.Generic("Bad URL in config.url system property: '"
+                        + url + "': " + e.getMessage(), e);
+                }
+            }
+        }
+
+    }
+
+    /**
      * Parses a string (which should be valid HOCON or JSON by default, or
      * the syntax specified in the options otherwise).
      *
@@ -1080,8 +1164,8 @@ public final class ConfigFactory {
      * @param options parse options
      * @return the parsed configuration
      */
-    public static Config parseString(String s, ConfigParseOptions options) {
-        return Parseable.newString(s, options).parse().toConfig();
+    public static <T extends Object & ConfigList & Config> T parseString(String s, ConfigParseOptions options) {
+        return parse(Parseable.newString(s, options));
     }
 
     /**
@@ -1090,7 +1174,7 @@ public final class ConfigFactory {
      * @param s string to parse
      * @return the parsed configuration
      */
-    public static Config parseString(String s) {
+    public static <T extends Object & ConfigList & Config> T parseString(String s) {
         return parseString(s, ConfigParseOptions.defaults());
     }
 
@@ -1152,4 +1236,12 @@ public final class ConfigFactory {
 
         return Boolean.parseBoolean(overrideWithEnv);
     }
+    @SuppressWarnings("unchecked")
+	private static <T extends Object & ConfigList & Config> T parse(Parseable parseable){
+		ConfigValue configValue = (ConfigValue) parseable.parseValue();
+		if (configValue.valueType() == ConfigValueType.LIST) {
+			return (T) configValue;
+		}
+		return (T) parseable.parse().toConfig();
+      }
 }

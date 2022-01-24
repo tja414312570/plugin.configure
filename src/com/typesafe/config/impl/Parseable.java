@@ -305,7 +305,7 @@ public abstract class Parseable implements ConfigParseable {
         return parseDocument(options());
     }
 
-    AbstractConfigValue parseValue() {
+    public AbstractConfigValue parseValue() {
         return parseValue(options());
     }
 
