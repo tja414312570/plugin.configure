@@ -786,6 +786,7 @@ public final class SimpleConfig implements Config, MergeableValue, Serializable 
 
     @Override
 	public boolean getBoolean(String path, boolean defaultValue) {
+    	allowKeyNull();
     	ConfigValue v = find(path, ConfigValueType.BOOLEAN);
         if(v==null)
         	return defaultValue;
@@ -858,6 +859,7 @@ public final class SimpleConfig implements Config, MergeableValue, Serializable 
 
     @Override
 	public double getDouble(String path, double defaultValue) {
+    	allowKeyNull();
     	Number n = getNumber(path);
     	return n==null?defaultValue:n.doubleValue();
 	}
@@ -1018,6 +1020,7 @@ public final class SimpleConfig implements Config, MergeableValue, Serializable 
 
     @Override
 	public int getInt(String path, int defaultValue) {
+    	allowKeyNull();
     	ConfigNumber n = getConfigNumber(path);
         return n==null?defaultValue:n.intValueRangeChecked(path);
 	}
@@ -1051,6 +1054,7 @@ public final class SimpleConfig implements Config, MergeableValue, Serializable 
 
     @Override
 	public long getLong(String path, long defaultValue) {
+    	allowKeyNull();
     	Number n = getNumber(path);
         return n==null?defaultValue:n.longValue();
 	}
@@ -1141,6 +1145,7 @@ public final class SimpleConfig implements Config, MergeableValue, Serializable 
 
     @Override
 	public String getString(String path, String defaultValue) {
+    	 allowKeyNull();
     	 ConfigValue v = find(path, ConfigValueType.STRING);
          return v==null?defaultValue:(String) v.unwrapped();
 	}
