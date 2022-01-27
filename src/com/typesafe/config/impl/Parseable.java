@@ -128,7 +128,7 @@ public abstract class Parseable implements ConfigParseable {
         return includeContext;
     }
 
-    static AbstractConfigObject forceParsedToObject(ConfigValue value) {
+    public AbstractConfigObject forceParsedToObject(ConfigValue value) {
         if (value instanceof AbstractConfigObject) {
             return (AbstractConfigObject) value;
         } else {

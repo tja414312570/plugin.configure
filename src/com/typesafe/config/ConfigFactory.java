@@ -1242,6 +1242,6 @@ public final class ConfigFactory {
 		if (configValue.valueType() == ConfigValueType.LIST) {
 			return (T) configValue;
 		}
-		return (T) parseable.parse().toConfig();
+		return (T) ((ConfigObject)parseable.forceParsedToObject(configValue)).toConfig();
       }
 }
