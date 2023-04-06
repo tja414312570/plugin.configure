@@ -1,96 +1,96 @@
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigDocumentParser.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigNodeComment.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/Unmergeable.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/SimpleConfigDocument.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ResolveResult.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/OriginType.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/Tokenizer.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/AbstractConfigObject.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigValue.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/parser/ConfigDocumentFactory.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigOrigin.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/DefaultConfigLoadingStrategy.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/SimpleConfigObject.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/AbstractConfigNodeValue.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ReplaceableMergeStack.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/SimpleConfig.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigBeanFactory.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/FullIncluder.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/SimpleIncluder.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/PathParser.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigException.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/Container.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/AbstractConfigNode.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigInt.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigList.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigReference.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigIncluder.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigNodeSingleToken.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/BadMap.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigNodeObject.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/SerializedConfigValue.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigBeanImpl.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigFactory.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigOriginFactory.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigLoadingStrategy.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigMergeable.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigImplUtil.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ResolveMemos.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/parser/ConfigNode.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigDouble.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigValueFactory.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/PropertiesParser.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigUtil.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigNumber.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/Parseable.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigDelayedMergeObject.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/Config.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigBoolean.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigNull.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigIncluderURL.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigNodeInclude.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/Optional.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigMemorySize.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigNodeField.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigNodeConcatenation.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/parser/ConfigDocument.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/Token.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/FromMapMode.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigSyntax.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ResolveContext.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ResolveSource.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/MergeableValue.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigNodeRoot.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigString.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigRenderOptions.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigParseOptions.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigIncluderFile.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigNodePath.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigIncludeKind.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/DefaultTransformer.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/SimpleConfigOrigin.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigIncluderClasspath.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigDelayedMerge.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigLong.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigIncludeContext.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigParseable.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigConcatenation.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/Tokens.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigNodeSimpleValue.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigParser.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ResolveStatus.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigNodeArray.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigValueType.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/Path.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/AbstractConfigValue.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/TokenType.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/SubstitutionExpression.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigResolver.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/SimpleConfigList.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigObject.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/SimpleIncludeContext.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigNodeComplexValue.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/ConfigResolveOptions.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/PathBuilder.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/ConfigImpl.java
-/Volumes/GENERAL/java projects/confi/src/com/typesafe/config/impl/MemoKey.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\SubstitutionExpression.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigNodeSingleToken.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigLong.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\MergeableValue.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\TokenType.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\AbstractConfigNodeValue.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigNodePath.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\DefaultTransformer.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigInt.java
+C:\git\plugin.configure\src\com\typesafe\config\DefaultConfigLoadingStrategy.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\Tokens.java
+C:\git\plugin.configure\src\com\typesafe\config\parser\ConfigDocument.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigIncludeContext.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigIncluder.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigIncluderClasspath.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigDelayedMerge.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\PropertiesParser.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\Token.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\MemoKey.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ResolveStatus.java
+C:\git\plugin.configure\src\com\typesafe\config\parser\ConfigDocumentFactory.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\SimpleIncludeContext.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigIncludeKind.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ReplaceableMergeStack.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigDouble.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigSyntax.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigNodeObject.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ResolveContext.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigDelayedMergeObject.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\SimpleConfigObject.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigValueType.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigConcatenation.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigOrigin.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigIncluderFile.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigMergeable.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ResolveSource.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigNodeField.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigBeanFactory.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\Unmergeable.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigLoadingStrategy.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\SerializedConfigValue.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigMemorySize.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\FromMapMode.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigBoolean.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ResolveMemos.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigException.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigNodeSimpleValue.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigReference.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigIncluderURL.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigNull.java
+C:\git\plugin.configure\src\com\typesafe\config\parser\ConfigNode.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigBeanImpl.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\Container.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\Path.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigParseOptions.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\SimpleConfig.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigDocumentParser.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\OriginType.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigNumber.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\AbstractConfigNode.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigNodeArray.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\PathBuilder.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigRenderOptions.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\SimpleConfigOrigin.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\PathParser.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\SimpleIncluder.java
+C:\git\plugin.configure\src\com\typesafe\config\Config.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\Parseable.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\Tokenizer.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigNodeConcatenation.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigNodeComplexValue.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigObject.java
+C:\git\plugin.configure\src\com\typesafe\config\Optional.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigNodeComment.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigImplUtil.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigResolveOptions.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigParser.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigValue.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\FullIncluder.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\BadMap.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigList.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigNodeInclude.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\SimpleConfigDocument.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigFactory.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigImpl.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigResolver.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigValueFactory.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigOriginFactory.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigNodeRoot.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigParseable.java
+C:\git\plugin.configure\src\com\typesafe\config\ConfigUtil.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\AbstractConfigObject.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\AbstractConfigValue.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ResolveResult.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\ConfigString.java
+C:\git\plugin.configure\src\com\typesafe\config\impl\SimpleConfigList.java
